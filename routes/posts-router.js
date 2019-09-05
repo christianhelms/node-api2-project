@@ -99,7 +99,8 @@ router.get("/", (req, res) => {
     Posts
       .findPostComments(postId)
       .then(post => {
-        if (postId > post) {
+        if (post.length === 0) {
+            console.log(post)
           return res
             .status(404)
             .json({ message: "The post with the specified ID does not exist." });
